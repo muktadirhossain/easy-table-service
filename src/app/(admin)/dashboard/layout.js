@@ -1,0 +1,24 @@
+import SideNavBar from "@/components/nav/SideNavBar";
+
+export default function DashboardLayout({ children }) {
+    return (
+
+        <main
+            className="dark:bg-slate-900 dark:text-slate-300 px-1 relative"
+        >
+            <div className="flex justify-between min-h-screen">
+                <aside className="w-2/12 py-1.5 min-h-screen overflow-y-auto">
+                    <h2>Dashboard</h2>
+                    <SideNavBar />
+                </aside>
+                <main className="w-10/12 max-h-full overflow-y-auto">
+                    <div className="min-h-screen border-dashed border-2 dark:border-slate-400 rounded-md m-2 p-5 hero-pattern">
+
+                        {children}
+                    </div>
+                </main>
+            </div>
+        </main>
+
+    );
+}
