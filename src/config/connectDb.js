@@ -11,7 +11,7 @@ const connectToDB = async () => {
   }
 
   const options = {
-    dbName: "rms",
+    dbName: "ets",
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
@@ -20,10 +20,10 @@ const connectToDB = async () => {
 
     config.isConnected = connection.readyState;
 
-    // console.log("Connected to DB");
-    // console.log("connected with host ", connection.host);
+    console.log("Connected to DB 💡💡💡");
+
   } catch (error) {
-    // console.log("Failed to connect DB::", error);
+    console.log("Failed to connect DB::", error.message);
   }
 };
 

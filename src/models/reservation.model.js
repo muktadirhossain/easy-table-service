@@ -12,9 +12,9 @@ const reservationSchema = new mongoose.Schema(
       require: [true, "Must provide your email!"],
       trim: true,
       validate: {
-        validator: function (v) {
+        validator: function (val) {
           // Regular expression to validate email address
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
         },
         message: "Invalid email address format!",
       },
@@ -60,8 +60,7 @@ const reservationSchema = new mongoose.Schema(
 
 // Create a Reservation Model With the schema::
 const Reservation =
-  mongoose.models.Reservation ||
-  mongoose.model("Reservation", reservationSchema);
+  mongoose.models.Reservation || mongoose.model("Reservation", reservationSchema);
 
 // Export the Reservation Model::
 export default Reservation;

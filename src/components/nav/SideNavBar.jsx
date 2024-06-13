@@ -12,7 +12,8 @@ import {
   PresentationChartLineIcon,
   Cog6ToothIcon,
   ChartBarIcon,
-  ChevronDoubleLeftIcon
+  ChevronDoubleLeftIcon,
+  UserIcon
 } from "@heroicons/react/24/solid";
 
 
@@ -36,19 +37,9 @@ export default function SideNavBar() {
       icon: <BookmarkIcon className="md:h-6 md:w-6 h-4 w-4" />,
     },
     {
-      navTitle: "Ingredients",
-      link: "/dashboard/ingredients",
-      icon: <BookmarkIcon className="md:h-6 md:w-6 h-4 w-4" />,
-    },
-    {
-      navTitle: "Purchase",
-      link: "/dashboard/purchase",
-      icon: <BookmarkIcon className="md:h-6 md:w-6 h-4 w-4" />,
-    },
-    {
-      navTitle: "Closing Stock",
-      link: "/dashboard/closing-stock",
-      icon: <BookmarkIcon className="md:h-6 md:w-6 h-4 w-4" />,
+      navTitle: "Users",
+      link: "/dashboard/users",
+      icon: <UserIcon className="md:h-6 md:w-6 h-4 w-4" />,
     },
   ]
 
