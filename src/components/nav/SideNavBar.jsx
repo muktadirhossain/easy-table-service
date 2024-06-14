@@ -1,20 +1,17 @@
 
+import LogOutSideNav from './LogOutSideNav';
 import NavigationLink from './NavigationLink'
 import {
-  ArchiveBoxArrowDownIcon,
-  ClipboardDocumentListIcon,
   HomeIcon,
-  ShoppingCartIcon,
   TagIcon,
   BookmarkIcon,
-  BanknotesIcon,
-  WalletIcon,
-  PresentationChartLineIcon,
-  Cog6ToothIcon,
-  ChartBarIcon,
-  ChevronDoubleLeftIcon,
-  UserIcon
+  UserIcon,
+  ArrowLeftStartOnRectangleIcon
 } from "@heroicons/react/24/solid";
+
+
+
+
 
 
 
@@ -50,6 +47,7 @@ export default function SideNavBar() {
           <NavigationLink item={item} />
         </li>
       ))}
+      <LogOutSideNav />
     </ul>
   );
 }

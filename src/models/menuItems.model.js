@@ -25,9 +25,9 @@ const menuItemsSchema = new mongoose.Schema(
       required: [true, "Must Provide a price of an Item"],
       minValue: 1,
     },
-    images: {
-      type: Array,
-      defaultValue: [],
+    image: {
+      type: String,
+      defaultValue: "",
     },
     category: {
       type: mongoose.Schema.Types.ObjectId,

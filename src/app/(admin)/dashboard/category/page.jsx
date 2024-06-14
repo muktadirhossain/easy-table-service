@@ -25,30 +25,34 @@ async function page() {
       <section className="mt-20">
 
         <div className="overflow-x-auto">
-          <table className="table table-zebra table-pin-rows">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>#</th>
-                <th className='prose-lg'>Category Name</th>
+          {data?.length > 0 &&
+            <table className="table table-zebra table-pin-rows">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th className='prose-lg'>Category Name</th>
 
-                <th className='prose-lg'>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                data?.map((category, idx) => <tr key={category._id}>
-                  <th>{idx + 1}</th>
-                  <td>{category?.categoryName}</td>
+                  <th className='prose-lg'>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  data?.map((category, idx) => <tr key={category._id}>
+                    <th>{idx + 1}</th>
+                    <td>{category?.categoryName}</td>
 
-                  <td>
-                    <DeleteCategory id={JSON.stringify(category?._id)} />
-                  </td>
-                </tr>)
-              }
+                    <td>
+                      <DeleteCategory id={JSON.stringify(category?._id)} />
+                    </td>
+                  </tr>)
+                }
 
-            </tbody>
-          </table>
+              </tbody>
+            </table>}
+            {
+              data.length === 0 && <h3 className='text-center font-medium text-2xl'>No data Found 🙁</h3>
+            }
         </div>
       </section>
 
