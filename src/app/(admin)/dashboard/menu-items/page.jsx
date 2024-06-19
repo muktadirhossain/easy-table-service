@@ -5,10 +5,11 @@ import { getAllMenuItems } from '@/lib/fetchMenuItems';
 import DeleteMenuItem from './deleteMenuItem';
 import Image from 'next/image';
 
+export const dynamic = 'force-dynamic';
 
-async function page() {
+async function Page() {
   const data = await getAllMenuItems();
-  // console.log(data);
+
   return (
     <div>
       <div className='flex justify-end'>
@@ -78,4 +79,4 @@ async function page() {
   )
 }
 
-export default page
+export default Page

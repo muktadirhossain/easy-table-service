@@ -6,12 +6,9 @@ import {
   TagIcon,
   BookmarkIcon,
   UserIcon,
-  ArrowLeftStartOnRectangleIcon
+  BuildingStorefrontIcon,
+  PresentationChartBarIcon
 } from "@heroicons/react/24/solid";
-
-
-
-
 
 
 
@@ -37,6 +34,16 @@ export default function SideNavBar() {
       navTitle: "Users",
       link: "/dashboard/users",
       icon: <UserIcon className="md:h-6 md:w-6 h-4 w-4" />,
+    },
+    {
+      navTitle: "POS",
+      link: "/pos",
+      icon: <BuildingStorefrontIcon className="md:h-6 md:w-6 h-4 w-4" />,
+    },
+    {
+      navTitle: "Orders",
+      link: "/dashboard/orders",
+      icon: <PresentationChartBarIcon className="md:h-6 md:w-6 h-4 w-4" />,
     },
   ]
 

@@ -1,6 +1,30 @@
 import Link from 'next/link'
+import MenuLink from './MenuLink'
+import CONSTANTS from '@/assets/constants';
+import { cookies } from 'next/headers';
+import verifyJWT from '@/utils/verifyJWT';
+import LogOutSideNav from './LogOutSideNav';
 
-function Header() {
+async function Header() {
+    const cookieStore = cookies();
+    const token = cookieStore.get(CONSTANTS?.cookieName)?.value;
+    const user = await verifyJWT(token, CONSTANTS?.tokenSecret);
+
+    const links = [
+        {
+            link: '/',
+            label: 'Home',
+        },
+        {
+            link: '/cart',
+            label: 'Cart'
+        },
+        {
+            link: '/dashboard/home',
+            label: 'Dashboard'
+        },
+
+    ]
     return (
         <header className="text-gray-600 body-font">
             <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -15,16 +39,21 @@ function Header() {
                     <span className="ml-3 text-xl">Demo</span>
                 </Link>
                 <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                    <Link href="/dashboard/home" className="mr-5 text-lg dark:text-slate-400 hover:text-violet-700 dark:hover:text-violet-400 font-medium">Dashboard</Link>
-                    <Link href="/" className="mr-5 text-lg dark:text-slate-400 hover:text-violet-700 dark:hover:text-violet-400 font-medium">Menu</Link>
-                    <Link href="/" className="mr-5 text-lg dark:text-slate-400 hover:text-violet-700 dark:hover:text-violet-400 font-medium">Cart</Link>
-                    <Link href="/" className="mr-5 text-lg dark:text-slate-400 hover:text-violet-700 dark:hover:text-violet-400 font-medium">Table Booking</Link>
+                    {
+                        links.map((link) => <MenuLink key={link?.link} {...link} />)
+                    }
                 </nav>
-                <Link href={'/login'} className="inline-flex items-center bg-violet-600 text-white border-0 py-1 px-3 focus:outline-none hover:bg-violet-800 rounded text-base mt-4 md:mt-0">Login
-                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg>
-                </Link>
+                {
+                    !user?.id && !user?.role ?
+
+                        <Link href={'/login'} className="inline-flex items-center bg-violet-600 text-white border-0 py-1 px-3 focus:outline-none hover:bg-violet-800 rounded text-base mt-4 md:mt-0">Login
+                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </Link>
+                        :
+                        <LogOutSideNav />
+                }
             </div>
         </header>
     )

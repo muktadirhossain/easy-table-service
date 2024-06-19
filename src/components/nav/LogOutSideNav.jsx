@@ -4,16 +4,19 @@ import {
     ArrowLeftStartOnRectangleIcon
 } from "@heroicons/react/24/solid";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 
 
 function LogOutSideNav() {
+    const router = useRouter()
     const logout = async () => {
         try {
             const res = await axios.post(CONSTANTS?.baseUrl + '/api/users/logout')
             console.log(res?.data)
             if (res?.data?.success) {
                 toast.success(res.data?.message)
+                router.refresh()
             }
         } catch (error) {
             console.error(error.message)
@@ -23,7 +26,7 @@ function LogOutSideNav() {
     return (
         <>
             <Toaster />
-            <li className='font-medium  block px-1 rounded-sm my-1 cursor-pointer '>
+            <li className='font-medium block px-1 rounded-sm my-1 cursor-pointer '>
                 <button
                     onClick={logout}
                     className="flex flex-col justify-center items-center py-2 sm:flex-row sm:items-center sm:justify-start ">

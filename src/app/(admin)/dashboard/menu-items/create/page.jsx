@@ -1,7 +1,7 @@
 import { addMenu } from '@/action/action'
 import { getAllCategories } from '@/lib/fetchCategory'
 
-async function page() {
+async function Page() {
     const categories = await getAllCategories()
     // console.log("categories", categories)
     return (
@@ -98,4 +98,4 @@ async function page() {
     )
 }
 
-export default page
+export default Page

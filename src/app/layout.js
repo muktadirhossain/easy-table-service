@@ -1,5 +1,6 @@
 import { Jost } from "next/font/google";
 import "./globals.css";
+import GlobalContextProvider from "@/context/GlobalContextProvider";
 
 const jost = Jost({ subsets: ["latin"] });
 
@@ -10,6 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    
     <html lang="en"
     // data-theme="night"
     >

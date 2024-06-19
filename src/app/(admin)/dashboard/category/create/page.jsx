@@ -1,6 +1,6 @@
 import { addCategory } from '@/action/action'
 import HeadingDashboard from '@/components/typography/HeadingDashboard'
-function page() {
+function Page() {
   return (
     <div>
       <HeadingDashboard>Create New Category</HeadingDashboard>
@@ -33,4 +33,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

@@ -5,13 +5,18 @@ import useInput from '@/hooks/useInput';
 import axios from 'axios';
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 
-function page() {
+import toast, { Toaster } from 'react-hot-toast';
+
+function Page() {
     const formData = {
         username: null,
         password: null
     };
     const { input, inputChangeHandler, setInput } = useInput(formData);
+
+    const router = useRouter()
 
     const login = async (event) => {
         event.preventDefault();
@@ -19,13 +24,20 @@ function page() {
             alert("Please enter a username and password.")
         }
         try {
-            console.log(input)
+            // console.log(input)
             const res = await axios.post(`${CONSTANTS.baseUrl}/api/users/login`, {
                 username: input.username,
                 password: input.password
             })
             console.log(res?.data)
+            if(res?.data?.success){
+                toast.success("Login successful!")
+                router.push('/')
+            }else{
+                toast.error(res?.data?.message)
+            }
         } catch (error) {
+            toast.error(error?.message)
             console.log(error);
         }
     }
@@ -43,6 +55,7 @@ function page() {
                     objectFit: "cover",
                 }}
             />
+            <Toaster/>
             <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
                 <div className="w-full bg-gray-100/95 rounded-lg shadow dark:border md:mt-0 sm:max-w-md p-10 dark:bg-gray-800/95 dark:border-gray-700">
                     <HeadingDashboard>Login</HeadingDashboard>
@@ -94,4 +107,4 @@ function page() {
     )
 }
 
-export default page;
+export default Page;

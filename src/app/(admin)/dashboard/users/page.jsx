@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import ActionArea from './DeleteUser'
 
-const page = async () => {
+const Page = async () => {
   const data = await getAllUsers()
   return (
     <div>
@@ -53,4 +53,4 @@ const page = async () => {
   )
 }
 
-export default page
+export default Page

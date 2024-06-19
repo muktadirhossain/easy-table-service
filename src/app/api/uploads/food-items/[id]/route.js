@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import fs from "fs/promises";
 
+
+export const dynamic = 'force-dynamic';
+
+
 export const GET = async (req, {params:{id}}) => {
   try {
     const file = await fs.readFile(`./public/uploads/${id}`);

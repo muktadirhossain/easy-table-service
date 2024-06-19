@@ -3,6 +3,7 @@
 import connectToDB from "@/config/connectDb"
 import Category from "@/models/category.model"
 import MenuItems from "@/models/menuItems.model"
+import Order from "@/models/order.model"
 import User from "@/models/user.model"
 import uploadFileHandler from "@/utils/uploadFileHandler"
 import { revalidatePath } from "next/cache"
@@ -43,8 +44,6 @@ export const addMenu = async (formData) => {
     connectToDB()
     try {
         const { title, price, description, itemCode, img, category } = Object.fromEntries(formData)
-        console.log(category)
-
         // Img upload
         // Save File to DB::
         const fileURL = await uploadFileHandler(
@@ -115,6 +114,23 @@ export const makeCustomer = async (id) => {
         })
 
         revalidatePath(`/dashboard/users`)
+
+    } catch (error) {
+        console.log(error)
+        throw new Error(error.message)
+    }
+}
+
+export const changeOrderStatus = async (id, status) => {
+    connectToDB()
+    try {
+        await Order.findByIdAndUpdate(id, {
+            $set: {
+                orderStatus: status
+            }
+        })
+
+     revalidatePath(`/dashboard/orders/details/${id}`)
 
     } catch (error) {
         console.log(error)

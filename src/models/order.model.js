@@ -20,21 +20,20 @@ const orderItemsSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  foodItemUID: {
+  _id: {
     type: mongoose.Schema.ObjectId,
     ref: "MenuItems",
     required: true,
   },
-  ingredients: [ingredientSchema],
 });
 
 const foodOrderSchema = new mongoose.Schema(
   {
-    orderID: {
-      type: String,
-      unique: true,
-      required: [true,'Custom Order ID is required!']
-    },
+    // orderID: {
+    //   type: String,
+    //   unique: true,
+    //   required: [true, 'Custom Order ID is required!']
+    // },
     orderType: {
       type: String,
       lowercase: true,
@@ -68,10 +67,6 @@ const foodOrderSchema = new mongoose.Schema(
       required: [true, "Must Provide totalPrice"],
       minValue: 1,
     },
-    discount: {
-      type: Number,
-      default: 0,
-    },
     vat: {
       type: Number,
       default: 0,
@@ -86,22 +81,25 @@ const foodOrderSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "User",
     },
-    recipientsName: {
+    customerName: {
       type: String,
       required: false,
     },
-    recipientsNumber: {
+    customerNumber: {
       type: String,
       required: false,
     },
-    address: {
+    cardNumber: {
       type: String,
       required: false,
     },
-    date: {
-      type: Date,
-      default: Date.now,
-      required: true,
+    cardExpire: {
+      type: String,
+      required: false,
+    },
+    cvv: {
+      type: String,
+      required: false,
     },
   },
   {

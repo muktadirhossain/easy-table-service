@@ -5,7 +5,7 @@ import useInput from '@/hooks/useInput';
 import axios from 'axios';
 import Link from 'next/link';
 
-function page() {
+function Page() {
     const formData = {
         fullName: null,
         number: null,
@@ -81,4 +81,4 @@ function page() {
     )
 }
 
-export default page
+export default Page

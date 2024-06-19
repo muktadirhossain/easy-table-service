@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { PlusIcon } from '@heroicons/react/24/solid'
 import DeleteCategory from './DeleteCategory';
 
-async function page() {
+async function Page() {
   const data = await getAllCategories();
   return (
     <div>
@@ -62,4 +62,4 @@ async function page() {
   )
 }
 
-export default page
+export default Page

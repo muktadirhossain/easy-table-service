@@ -1,11 +1,13 @@
 import HeadingDashboard from '@/components/typography/HeadingDashboard'
+import connectToDB from '@/config/connectDb'
 import Category from '@/models/category.model'
 import MenuItems from '@/models/menuItems.model'
 import User from '@/models/user.model'
 import { UserGroupIcon, BookmarkIcon, TagIcon, ArrowUpRightIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 
-async function page() {
+async function Page() {
+  connectToDB()
 
   const userCount = await User.countDocuments()
   const categoryCount = await Category.countDocuments()
@@ -59,4 +61,4 @@ async function page() {
   )
 }
 
-export default page
+export default Page

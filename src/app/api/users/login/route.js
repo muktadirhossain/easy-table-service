@@ -17,6 +17,12 @@ export const POST = async (req, res) => {
                 { email: username }
             ]
         })
+        if(user?.length< 1){
+            return NextResponse.json({
+                status: 401,
+                message: "No user found !",
+            })
+        }
         // check password :
         const isValidPassword = await user[0].password === password;
 
