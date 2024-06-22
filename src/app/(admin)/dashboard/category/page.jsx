@@ -40,7 +40,7 @@ async function Page() {
                 {
                   data?.map((category, idx) => <tr key={category._id}>
                     <th>{idx + 1}</th>
-                    <td>{category?.categoryName}</td>
+                    <td className="capitalize" >{category?.categoryName}</td>
 
                     <td>
                       <DeleteCategory id={JSON.stringify(category?._id)} />

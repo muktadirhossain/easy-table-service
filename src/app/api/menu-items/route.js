@@ -1,4 +1,5 @@
 import connectToDB from "@/config/connectDb"
+import Category from "@/models/category.model";
 import MenuItems from "@/models/menuItems.model"
 import { NextResponse } from "next/server"
 
@@ -10,6 +11,7 @@ export const GET = async (req, res) => {
 
         const menuItems = await MenuItems.find({}).populate({
             path:'category',
+            model: Category,
             select: 'categoryName'
         })
         return NextResponse.json({

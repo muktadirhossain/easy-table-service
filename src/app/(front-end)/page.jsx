@@ -14,16 +14,24 @@ async function Page() {
   return (
     <div className='container mx-auto'>
 
-      <section className='grid grid-cols-3 gap-x-3'>
-        <section className='col-span-2'>
+      <section className='grid grid-cols-3 gap-x-3 '>
+        <section className='col-span-2 bg-hero-pattern'>
           <HeadingDashboard>All Food Items</HeadingDashboard>
+          {
+            data.length < 1 &&
+            <h3 className='text-center font-medium text-2xl my-10 opacity-80'>No Food items found.😔</h3>
+          }
           <div className='grid grid-cols-3 gap-3'>
             {
               data?.map(food => <FoodCard key={food?._id} food={JSON.stringify(food)} />)
             }
+
           </div>
         </section>
-        <CartArea />
+        {
+          data.length > 0 &&
+          <CartArea />
+        }
       </section>
     </div>
   )

@@ -55,10 +55,10 @@ async function Page() {
                       width={50}
                       />
                     </th>
-                    <td>{category?.title}</td>
+                    <td className="capitalize">{category?.title}</td>
                     <td>{category?.itemCode}</td>
                     <td>{category?.price}</td>
-                    <td>{category?.category?.categoryName}</td>
+                    <td className="capitalize" >{category?.category?.categoryName}</td>
 
                     <td>
                       <DeleteMenuItem id={JSON.stringify(category?._id)} />

@@ -9,12 +9,8 @@ import Link from "next/link";
 const CartArea = () => {
     const { cartData, removeCartItem, addToCartHandler, decrementCartQuantity } = useContext(GlobalContext)
 
-    useEffect(() => {
-
-    }, [])
-
     return (
-        <aside className="py-5 mx-5">
+        <aside className="py-5 mx-5 dark:bg-slate-800 rounded-md mt-5 px-5">
             <h3 className="text-center font-semibold text-xl text-rose-500">Your Order</h3>
             {
                 cartData.length > 0 ?
@@ -23,38 +19,39 @@ const CartArea = () => {
                             {cartData.map(item =>
                                 <div className="flex justify-between items-center m-1.5 border-b pb-5" key={item?._id}>
                                     <div className="flex items-center justify-between gap-x-3">
-                                        <p className="font-semibold text-rose-500">{item?.title}</p>
-                                        <p className="text-xs">({item?.price} * {item?.quantity} = {item?.price * item?.quantity}$)</p>
+                                        <p className="font-semibold capitalize">{item?.title}</p>
+                                        <p className="text-base">{item?.price} $</p>
                                     </div>
-                                    <div className="flex justify-evenly items-center gap-x-2 ">
-                                        <button
-                                            onClick={() => {
-                                                addToCartHandler(item, "cartItems")
-                                            }}
-                                            className="btn btn-outline btn-circle btn-success btn-sm">
-                                            <PlusIcon className="h-6 w-6" />
-                                        </button>
-                                        <p className="btn btn-info btn-sm">{item?.quantity}</p>
-                                        {
-                                            item?.quantity === 1 ?
-                                                <button
-                                                    onClick={() => {
-                                                        removeCartItem(item?._id, "cartItems")
-                                                    }}
-                                                    className="btn btn-outline btn-circle btn-error btn-sm ">
-                                                    <TrashIcon className="h-4 w-4" />
-                                                </button>
-                                                :
-                                                <button
-                                                    onClick={() => {
-                                                        decrementCartQuantity(item?._id, "cartItems")
-                                                    }}
-                                                    className="btn btn-outline btn-circle btn-error btn-sm ">
-                                                    <MinusIcon className="h-4 w-4" />
-                                                </button>
-                                        }
-
-
+                                    <div className="flex flex-col items-center justify-center">
+                                        <p className="text-base my-1 font-mono">{item?.price * item?.quantity} $</p>
+                                        <div className="flex justify-evenly items-center gap-x-2 ">
+                                            {
+                                                item?.quantity === 1 ?
+                                                    <button
+                                                        onClick={() => {
+                                                            removeCartItem(item?._id, "cartItems")
+                                                        }}
+                                                        className="btn btn-outline btn-circle btn-error btn-sm ">
+                                                        <TrashIcon className="h-4 w-4" />
+                                                    </button>
+                                                    :
+                                                    <button
+                                                        onClick={() => {
+                                                            decrementCartQuantity(item?._id, "cartItems")
+                                                        }}
+                                                        className="btn btn-outline btn-circle btn-error btn-sm ">
+                                                        <MinusIcon className="h-4 w-4" />
+                                                    </button>
+                                            }
+                                            <p className="btn btn-info btn-sm">{item?.quantity}</p>
+                                            <button
+                                                onClick={() => {
+                                                    addToCartHandler(item, "cartItems")
+                                                }}
+                                                className="btn btn-outline btn-circle btn-success btn-sm">
+                                                <PlusIcon className="h-6 w-6" />
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>)}
                         </div>

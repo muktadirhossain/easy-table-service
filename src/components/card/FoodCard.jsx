@@ -15,7 +15,7 @@ const FoodCard = ({ food }) => {
     }
 
     return (
-        <div className="card w-full bg-base-100 shadow-xl">
+        <div className="card w-full bg-base-100 dark:bg-slate-800/95 shadow-xl">
             <figure className='h-40'>
                 <Image
                     alt={title}
@@ -25,12 +25,12 @@ const FoodCard = ({ food }) => {
                 />
             </figure>
             <div className="card-body">
-                <h2 className="card-title">
+                <h2 className="card-title first-letter:capitalize">
                     {title}
                     <div className="badge badge-secondary">{category?.categoryName}</div>
                 </h2>
                 <p className='text-base font-medium'>Price : <span className='font-bold text-rose-500'>{price}  $</span></p>
-                <p className='text-base font-normal'>{description.length < 70
+                <p className='text-base font-normal first-letter:capitalize'>{description.length < 70
                     ? description
                     : `${description.slice(0, 70)}...`}</p>
                 <div className="card-actions justify-between items-center">
