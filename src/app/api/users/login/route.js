@@ -9,7 +9,7 @@ connectToDB()
 export const POST = async (req, res) => {
     try {
         const { username, password } = await req.json();
-        console.log(username, password);
+        // console.log(username, password);
 
         const user = await User.find({
             $or: [

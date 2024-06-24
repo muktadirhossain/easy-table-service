@@ -13,11 +13,8 @@ export const addCategory = async (formData) => {
     connectToDB()
     try {
         const { categoryName } = Object.fromEntries(formData)
-        console.log(categoryName)
-        const res = await Category.create({ categoryName })
-
+        await Category.create({ categoryName })
         revalidatePath(`/dashboard/category`)
-
     } catch (error) {
         console.log(error)
         throw new Error(error.message)
@@ -29,10 +26,8 @@ export const addCategory = async (formData) => {
 export const deleteCategory = async (id) => {
     connectToDB()
     try {
-        const res = await Category.findByIdAndDelete(id)
-
+        await Category.findByIdAndDelete(id)
         revalidatePath(`/dashboard/category`)
-
     } catch (error) {
         console.log(error)
         throw new Error(error.message)
@@ -130,7 +125,7 @@ export const changeOrderStatus = async (id, status) => {
             }
         })
 
-     revalidatePath(`/dashboard/orders/details/${id}`)
+        revalidatePath(`/dashboard/orders/details/${id}`)
 
     } catch (error) {
         console.log(error)

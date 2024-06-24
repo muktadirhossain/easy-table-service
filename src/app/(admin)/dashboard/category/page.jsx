@@ -1,15 +1,15 @@
 import HeadingDashboard from '@/components/typography/HeadingDashboard'
-import { getAllCategories } from '@/lib/fetchCategory'
 import Link from 'next/link'
 import { PlusIcon } from '@heroicons/react/24/solid'
 import DeleteCategory from './DeleteCategory';
+import { getAllCategories } from '@/query/query';
+
+export const dynamic = 'force-dynamic';
 
 async function Page() {
   const data = await getAllCategories();
   return (
     <div>
-
-
       <div className='flex justify-end'>
         <Link
           className='btn btn-primary'
@@ -50,9 +50,9 @@ async function Page() {
 
               </tbody>
             </table>}
-            {
-              data.length === 0 && <h3 className='text-center font-medium text-2xl'>No data Found 🙁</h3>
-            }
+          {
+            data.length === 0 && <h3 className='text-center font-medium text-2xl'>No data Found 🙁</h3>
+          }
         </div>
       </section>
 

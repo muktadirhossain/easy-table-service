@@ -4,8 +4,11 @@ import HeadingDashboard from '@/components/typography/HeadingDashboard'
 import useInput from '@/hooks/useInput';
 import axios from 'axios';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Page() {
+    const router = useRouter()
     const formData = {
         fullName: null,
         number: null,
@@ -16,15 +19,30 @@ function Page() {
     const { input, inputChangeHandler, setInput } = useInput(formData);
     const login = async (event) => {
         event.preventDefault();
-        const res = await axios.post(`${CONSTANTS.baseUrl}/api/users`, input)
-        if (res?.data?.status === 201) {
-            alert("User successfully registered!")
+        try {
+            const res = await axios.post(`${CONSTANTS.baseUrl}/api/users`, input)
+            console.log(res.data)
+            if (res?.data?.status === 201) {
+                // alert("User successfully registered!")
+                toast.success('User successfully registered!')
+                router.push('/login')
+            } else {
+                // toast.error(res?.data?.message)
+                toast(
+                    res?.data?.message,
+                    {
+                        duration: 6000,
+                    }
+                );
+            }
+        } catch (error) {
+            toast.error(error.message)
         }
-        console.log(res)
-        console.log(input)
+
     }
     return (
         <div>
+            <Toaster />
             <HeadingDashboard>Register</HeadingDashboard>
             <div className='mx-auto max-w-2xl'>
                 <form onSubmit={login} className='grid grid-cols-1 w-full gap-2'>
@@ -71,7 +89,7 @@ function Page() {
                     <div className='mt-5 flex justify-center'>
                         <button type='submit' className="btn btn-primary">Create User</button>
                     </div>
-                   
+
 
                 </form>
             </div>

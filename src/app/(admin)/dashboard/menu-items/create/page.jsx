@@ -1,5 +1,5 @@
 import { addMenu } from '@/action/action'
-import { getAllCategories } from '@/lib/fetchCategory'
+import { getAllCategories } from '@/query/query'
 
 async function Page() {
     const categories = await getAllCategories()

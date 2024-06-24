@@ -1,7 +1,7 @@
 import CartArea from "./CartArea"
 import FoodCard from "@/components/card/FoodCard"
 import HeadingDashboard from "@/components/typography/HeadingDashboard"
-import { getAllMenuItems } from "@/lib/fetchMenuItems"
+import { getAllMenuItems } from "@/query/query";
 import Link from "next/link"
 
 export const dynamic = 'force-dynamic';

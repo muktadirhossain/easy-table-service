@@ -2,15 +2,10 @@ import HeadingDashboard from '@/components/typography/HeadingDashboard'
 import dayjs from 'dayjs'
 import StatusSelector from './StatusSelector'
 import { getOrderById } from '@/query/query';
-import { notFound } from 'next/navigation';
 
 const Page = async ({ params: { id } }) => {
   const order = await getOrderById(id);
-
-  if (!order) {
-    return notFound()
-  }
-
+  
   return (
     <div>
       <HeadingDashboard>Order Details</HeadingDashboard>
@@ -37,7 +32,7 @@ const Page = async ({ params: { id } }) => {
               <td>{order?.vat}</td>
               <td>{order?.payableAmount}</td>
               <td>
-                <StatusSelector selected={order?.orderStatus.toString()} id={id.toString()} />
+                <StatusSelector selected={order?.orderStatus.toString()} id={id.toString()}/>
               </td>
             </tr>
 

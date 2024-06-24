@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const CartArea = () => {
-    const { cartData,setCartData, removeCartItem, addToCartHandler, decrementCartQuantity } = useContext(GlobalContext)
+    const { cartData, setCartData, removeCartItem, addToCartHandler, decrementCartQuantity } = useContext(GlobalContext)
     const router = useRouter()
     const { input, inputChangeHandler, setInput } = useInput({
         customerName: null,
@@ -138,9 +138,13 @@ const CartArea = () => {
                                     />
                                 </label>
 
-                                <button className="btn btn-error">
-                                    Review Order
-                                </button>
+                                <div className="flex justify-center flex-col">
+
+                                    <button className="btn btn-error my-5 mx-auto">
+                                        Review Order
+                                    </button>
+                                </div>
+
                             </form>
 
                         </div>

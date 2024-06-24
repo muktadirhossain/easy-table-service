@@ -1,9 +1,9 @@
-import { UserGroupIcon, BookmarkIcon, TagIcon, ArrowUpRightIcon, PlusIcon } from '@heroicons/react/24/solid'
+import { PlusIcon } from '@heroicons/react/24/solid'
 import HeadingDashboard from '@/components/typography/HeadingDashboard'
 import Link from 'next/link'
-import { getAllMenuItems } from '@/lib/fetchMenuItems';
 import DeleteMenuItem from './deleteMenuItem';
 import Image from 'next/image';
+import { getAllMenuItems } from '@/query/query';
 
 export const dynamic = 'force-dynamic';
 
@@ -48,11 +48,11 @@ async function Page() {
                     <th>{idx + 1}</th>
                     <th>
                       <Image
-                      alt={category?.title}
-                      src={category?.image}
-                      className='rounded-md'
-                      height={50}
-                      width={50}
+                        alt={category?.title}
+                        src={category?.image}
+                        className='rounded-md'
+                        height={50}
+                        width={50}
                       />
                     </th>
                     <td className="capitalize">{category?.title}</td>

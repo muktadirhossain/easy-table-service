@@ -1,8 +1,8 @@
 import HeadingDashboard from '@/components/typography/HeadingDashboard'
-import { getAllUsers } from '@/lib/fetchUsers'
-import Link from 'next/link'
-import React from 'react'
 import ActionArea from './DeleteUser'
+import { getAllUsers } from '@/query/query'
+
+export const dynamic = 'force-dynamic'
 
 const Page = async () => {
   const data = await getAllUsers()

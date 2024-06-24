@@ -10,7 +10,7 @@ const CartArea = () => {
     const { cartData, removeCartItem, addToCartHandler, decrementCartQuantity } = useContext(GlobalContext)
 
     return (
-        <aside className="py-5 mx-5 dark:bg-slate-800 rounded-md mt-5 px-5">
+        <aside className="py-5 mx-5 dark:bg-slate-800 rounded-md mt-5 px-5 max-h-[calc(100vh-80px)]  overflow-y-scroll">
             <h3 className="text-center font-semibold text-xl text-rose-500">Your Order</h3>
             {
                 cartData.length > 0 ?

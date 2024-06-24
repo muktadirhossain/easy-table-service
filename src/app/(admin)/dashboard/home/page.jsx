@@ -6,9 +6,10 @@ import User from '@/models/user.model'
 import { UserGroupIcon, BookmarkIcon, TagIcon, ArrowUpRightIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic';
+
 async function Page() {
   connectToDB()
-
   const userCount = await User.countDocuments()
   const categoryCount = await Category.countDocuments()
   const menusCount = await MenuItems.countDocuments()

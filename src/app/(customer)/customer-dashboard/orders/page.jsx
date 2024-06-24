@@ -1,13 +1,17 @@
 import HeadingDashboard from '@/components/typography/HeadingDashboard'
+
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
-import { getAllOrders } from '@/query/query'
+import GetUserFromCookie from '@/utils/GetUserFromCookie'
+import { getOrdersByUserId } from '@/query/query'
+
 
 export const dynamic = 'force-dynamic'
 
 const Page = async () => {
-    const data = await getAllOrders()
+    const user = await GetUserFromCookie()
+    const data = await getOrdersByUserId(user?._id)
     return (
         <div>
             <HeadingDashboard>All Orders </HeadingDashboard>
@@ -37,11 +41,11 @@ const Page = async () => {
 
                                         <td>{category?.subTotalPrice}</td>
                                         <td>{category?.payableAmount}</td>
-                                        <td className='capitalize'>{category?.customerName}</td>
+                                        <td className='capitalize' >{category?.customerName}</td>
                                         <td className={`capitalize mt-2 badge ${category?.orderStatus === 'canceled' ? 'badge-error' : "badge-success"}`}>{category?.orderStatus}</td>
                                         <td>{dayjs(category?.createdAt).format('DD/MM/YYYY')}</td>
                                         <td>
-                                            <Link href={`/dashboard/orders/details/${category?._id}`}>
+                                            <Link href={`/customer-dashboard/orders/details/${category?._id}`}>
                                                 <ArrowTopRightOnSquareIcon className='h-6 w-6 text-rose-500' />
                                             </Link>
                                         </td>

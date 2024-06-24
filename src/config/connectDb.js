@@ -12,10 +12,10 @@ const connectToDB = async () => {
   }
 
   const options = {
-    dbName: "ets",
+    dbName: CONSTANTS?.DB_NAME,
   };
   try {
-    if(!CONSTANTS.MONGO_CONNECTION_STRING){
+    if (!CONSTANTS.MONGO_CONNECTION_STRING) {
       throw new Error("No database connection string !!!")
     }
     const { connection } = await mongoose.connect(CONSTANTS.MONGO_CONNECTION_STRING, options);
@@ -23,6 +23,7 @@ const connectToDB = async () => {
     config.isConnected = connection.readyState;
 
     console.log("Connected to DB 💡💡💡");
+    // console.log(connection);
 
   } catch (error) {
     console.log("Failed to connect DB::", error.message);
