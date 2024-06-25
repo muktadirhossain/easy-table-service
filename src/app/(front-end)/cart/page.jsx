@@ -52,7 +52,7 @@ const Page = () => {
                                 <div className="flex justify-between items-center m-1.5 border-b pb-5" key={item?._id}>
                                     <div className="flex items-center justify-between gap-x-3">
                                         <p className="font-semibold text-rose-500">{item?.title}</p>
-                                        <p className="text-xs">({item?.price} * {item?.quantity} = {item?.price * item?.quantity}$)</p>
+                                        <p className="text-base">({item?.price} x {item?.quantity} = {item?.price * item?.quantity} {CONSTANTS?.CURRENCY})</p>
                                     </div>
                                     <div className="flex justify-evenly items-center gap-x-2 ">
                                         <button
@@ -90,14 +90,14 @@ const Page = () => {
                             <p className="text-sm font-medium">SubTotal : </p>
                             <p>
                                 {new Intl.NumberFormat("en-In").format(calculateSubtotal(cartData))}{" "}
-                                Tk.
+                                {CONSTANTS?.CURRENCY}
                             </p>
                         </div>
                         <div className="flex justify-between m-1.5">
                             <p className="text-sm font-medium">Vat (10%) : </p>
                             <p>
                                 {new Intl.NumberFormat("en-In").format(calculateSubtotal(cartData) * 10 / 100)}{" "}
-                                Tk.
+                                {CONSTANTS?.CURRENCY}
                             </p>
                         </div>
                         <hr className="my-2" />
@@ -105,7 +105,7 @@ const Page = () => {
                             <p className="text-sm font-medium">Grand Total : </p>
                             <p>
                                 {new Intl.NumberFormat("en-In").format(calculateSubtotal(cartData) + calculateSubtotal(cartData) * 10 / 100)}{" "}
-                                Tk.
+                                {CONSTANTS?.CURRENCY}
                             </p>
                         </div>
                         <HeadingDashboard>Fill these information to submit your order</HeadingDashboard>

@@ -11,11 +11,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    
+
     <html lang="en"
+      suppressHydrationWarning
     // data-theme="night"
     >
-      <body className={jost.className}>{children}</body>
+      <body className={jost.className}>{children}
+        <footer>
+          <p className="text-center dark:bg-slate-900 py-3">Copyright © 2024 | Developed & Maintained By Easy Table Services.</p>
+        </footer>
+      </body>
     </html>
   );
 }

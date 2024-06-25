@@ -4,6 +4,7 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { useContext } from 'react'
 import GlobalContext from '@/context/globalContext'
 import toast, { Toaster } from 'react-hot-toast'
+import CONSTANTS from '@/assets/constants'
 
 const FoodCard = ({ food }) => {
     const parsedData = JSON.parse(food)
@@ -29,7 +30,7 @@ const FoodCard = ({ food }) => {
                     {title}
                     <div className="badge badge-secondary">{category?.categoryName}</div>
                 </h2>
-                <p className='text-base font-medium'>Price : <span className='font-bold text-rose-500'>{price}  $</span></p>
+                <p className='text-base font-medium'>Price : <span className='font-bold text-rose-500'>{price}  {CONSTANTS?.CURRENCY}</span></p>
                 <p className='text-base font-normal first-letter:capitalize'>{description.length < 70
                     ? description
                     : `${description.slice(0, 70)}...`}</p>

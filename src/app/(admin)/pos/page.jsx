@@ -19,7 +19,7 @@ const POS = async () => {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
                     {
-                        data?.map(food => <FoodCard key={food?.key} food={JSON.stringify(food)} />)
+                        data?.map(food => <FoodCard key={food?.key.toString()} food={JSON.stringify(food)} />)
                     }
                 </div>
             </aside>
