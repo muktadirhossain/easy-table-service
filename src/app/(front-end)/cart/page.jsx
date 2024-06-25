@@ -117,7 +117,7 @@ const Page = () => {
                                     </div>
                                     <input
                                         type="text"
-                                        placeholder="Enter Category name..."
+                                        placeholder="Enter Customer Name..."
                                         className="input input-bordered w-full "
                                         name='customerName'
                                         onChange={(e) => inputChangeHandler(e)}
@@ -158,7 +158,7 @@ const Page = () => {
                                         </div>
                                         <input
                                             type="text"
-                                            placeholder="12/29"
+                                            placeholder="MM/YY"
                                             className="input input-bordered w-full "
                                             name='cardExpire'
                                             onChange={(e) => inputChangeHandler(e)}
@@ -170,7 +170,7 @@ const Page = () => {
                                             <span className="label-text">Card CVV</span>
                                         </div>
                                         <input
-                                            type="number"
+                                            type="text"
                                             placeholder="_ _ _"
                                             className="input input-bordered w-full "
                                             name='cvv'

@@ -20,7 +20,7 @@ const GlobalContextProvider = ({ children }) => {
             return;
         }
 
-        const existingCartItem = cartData.find((item) => item._id === product._id);
+        const existingCartItem = cartData?.find((item) => item._id === product._id);
 
         if (existingCartItem) {
             const updatedCartItems = cartData.map((item) =>
