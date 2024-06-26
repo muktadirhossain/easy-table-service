@@ -1,9 +1,30 @@
 import CONSTANTS from "@/assets/constants";
 import connectToDB from "@/config/connectDb"
 import Order from "@/models/order.model";
+import { getAllOrders } from "@/query/query";
 import { calculateSubtotal } from "@/utils/helpers";
 import verifyJWT from "@/utils/verifyJWT";
 import { NextResponse } from "next/server"
+
+export const dynamic = 'force-dynamic';
+
+export const GET = async (req, res) => {
+    try {
+        const orders = await getAllOrders()
+        return NextResponse.json({
+            status: true,
+            statusCode: 200,
+            data: orders
+        })
+    } catch (error) {
+        return NextResponse.json({
+            success: false,
+            statusCode: 500,
+            message: error.message
+        })
+    }
+}
+
 
 export const POST = async (req, res) => {
     connectToDB()
