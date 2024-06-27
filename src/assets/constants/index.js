@@ -1,7 +1,7 @@
 const CONSTANTS = {
     // baseUrl: 'http://localhost:3000',
     
-    baseUrl: process.env.BASE_URL?.toString(),
+    baseUrl: process.env.NEXT_PUBLIC_BASE_URL?.toString(),
     cookieName: 'easy-table-auth',
     tokenSecret: 'tokenSecret123456789',
     CURRENCY: '€',

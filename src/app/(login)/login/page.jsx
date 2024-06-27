@@ -24,7 +24,7 @@ function Page() {
             alert("Please enter a username and password.")
         }
         try {
-            // console.log(input)
+            console.log(input)
             const res = await axios.post(`${CONSTANTS.baseUrl}/api/users/login`, {
                 username: input.username,
                 password: input.password

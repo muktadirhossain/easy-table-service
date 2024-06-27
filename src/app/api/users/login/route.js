@@ -4,12 +4,14 @@ import User from "@/models/user.model"
 import { NextResponse } from "next/server"
 import jwt from "jsonwebtoken";
 
-connectToDB()
+
 
 export const POST = async (req, res) => {
+    connectToDB()
+    console.log('test---->')
     try {
         const { username, password } = await req.json();
-        // console.log(username, password);
+        console.log(username, password);
 
         const user = await User.find({
             $or: [
@@ -17,12 +19,13 @@ export const POST = async (req, res) => {
                 { email: username }
             ]
         })
-        if(user?.length< 1){
-            return NextResponse.json({
-                status: 401,
-                message: "No user found !",
-            })
-        }
+        console.log(user)
+        // if(user?.length< 1){
+        //     return NextResponse.json({
+        //         status: 401,
+        //         message: "No user found !",
+        //     })
+        // }
         // check password :
         const isValidPassword = await user[0].password === password;
 

@@ -33,9 +33,10 @@ export const getAllMenuItems = cache(async () => {
     }
 })
 
-export const getAllOrders = cache(async () => {
+export const getAllOrders = cache(async (query={}) => {
     try {
-        const orders = await Order.find({}).select("-cardExpire -cvv -cardNumber -updatedAt -__v")
+        const orders = await Order.find(query)
+                                  .select("-cardExpire -cvv -cardNumber -updatedAt -__v")
         return orders
     } catch (error) {
         throw new Error(error?.message)

@@ -28,7 +28,7 @@ const uploadFileHandler = async (
         const fileData = await file.arrayBuffer(); // Read file data as ArrayBuffer
         await fs.writeFile(publicPath, Buffer.from(fileData)); // Convert ArrayBuffer to Buffer and write to file
 
-        const imageUrl = `${CONSTANTS?.baseUrl + "/api" + "/" + destination_path+ "food-items/" + fileName
+        const imageUrl = `${"/api" + "/" + destination_path+ "food-items/" + fileName
             }`;
         return imageUrl;
     } catch (error) {
