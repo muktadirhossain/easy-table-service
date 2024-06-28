@@ -21,6 +21,7 @@ const Page = async () => {
                             <thead>
                                 <tr>
                                     <th className='prose-lg'>Order ID</th>
+                                    <th className='prose-lg'>Date</th>
                                     <th className='prose-lg'>Sub Total</th>
                                     <th className='prose-lg'>Total</th>
                                     <th className='prose-lg'>Customer Name</th>
@@ -34,6 +35,7 @@ const Page = async () => {
                                 {
                                     data?.map((category, idx) => <tr key={category._id}>
                                         <td className='text-xs'>{category?._id.toString()}</td>
+                                        <td className='text-xs'>{dayjs(category?.createdAt).format('MMM DD, YYYY')}</td>
 
                                         <td>{category?.subTotalPrice}</td>
                                         <td>{category?.payableAmount}</td>
