@@ -1,3 +1,5 @@
+import CONSTANTS from '@/assets/constants'
+import QrCodeGenerator from '@/components/qr-code/QrCodeGenerator'
 import HeadingDashboard from '@/components/typography/HeadingDashboard'
 import connectToDB from '@/config/connectDb'
 import Category from '@/models/category.model'
@@ -25,9 +27,9 @@ async function Page() {
             <TagIcon className='h-14 w-14 text-accent' />
             <h2 className="card-title">Categories : {String(categoryCount).padStart(2, '0')}</h2>
             <p className='text-justify'>You will find all the categories here in this section.
-            you can add or delete categories too! </p>
+              you can add or delete categories too! </p>
             <div className="card-actions justify-end">
-              <Link  href='/dashboard/category' className="btn btn-primary btn-sm mt-3">Buy Now
+              <Link href='/dashboard/category' className="btn btn-primary btn-sm mt-3">Buy Now
                 <ArrowUpRightIcon className='h-3 w-3' />
               </Link>
             </div>
@@ -57,6 +59,21 @@ async function Page() {
             </div>
           </div>
         </div>
+
+      </section>
+      <HeadingDashboard>QR Code</HeadingDashboard>
+
+      <section className='mt-5 mx-auto'>
+        {/* <QRCodeGenerator value={JSON.stringify(CONSTANTS?.baseUrl)}/> */}
+        <div className="card bg-base-100 shadow-xl">
+          <div className="card-body">
+              <p className='text-lg capitalize text-center text-info  bg-info/10 p-2 rounded-md'>Download and print the QR code to access the food menu.</p>
+              <QrCodeGenerator url={CONSTANTS?.baseUrl} />
+          </div>
+        </div>
+
+
+
       </section>
     </div>
   )

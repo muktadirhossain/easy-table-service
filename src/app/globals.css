@@ -3,3 +3,9 @@
 @tailwind utilities;
 
 /* default Styles  */
+
+.qr_code__box{
+    padding: 10px;
+    background-color: white !important;
+    border-radius: 5px;
+}
